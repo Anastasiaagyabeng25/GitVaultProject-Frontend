@@ -1,25 +1,25 @@
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import { Octicons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
 import React from "react";
-
 export default function BottomTabsLayout() {
   return (
     <Tabs
-      screenOptions={{ tabBarActiveTintColor: "teal" }}
-      backBehavior="order"
+      screenOptions={{
+        tabBarStyle: {
+          backgroundColor: "#FFFFFF",
+          borderTopColor: "#E5E5E5",
+        },
+        tabBarActiveTintColor: "#0366d6",
+        tabBarInactiveTintColor: "#6a737d",
+        headerShown: false,
+      }}
     >
       <Tabs.Screen
-        name="(home)"
+        name="index"
         options={{
           title: "Home",
-          headerShown: false,
-          tabBarLabel: "Index",
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons
-              name="numeric-1-box-outline"
-              size={size}
-              color={color}
-            />
+            <Octicons name="home" size={size} color={color} />
           ),
         }}
       />
@@ -27,14 +27,8 @@ export default function BottomTabsLayout() {
         name="notifications"
         options={{
           title: "Notifications",
-          headerShown: false,
-          popToTopOnBlur: true,
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons
-              name="numeric-2-box-outline"
-              size={size}
-              color={color}
-            />
+            <Octicons name="bell" size={size} color={color} />
           ),
         }}
       />
@@ -43,11 +37,7 @@ export default function BottomTabsLayout() {
         options={{
           title: "Explore",
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons
-              name="numeric-3-box-outline"
-              size={size}
-              color={color}
-            />
+            <Octicons name="search" size={size} color={color} />
           ),
         }}
       />
@@ -55,18 +45,8 @@ export default function BottomTabsLayout() {
         name="profile"
         options={{
           title: "Profile",
-          tabBarBadge: 2,
-          tabBarBadgeStyle: {
-            backgroundColor: "tomato",
-            color: "white",
-          },
-
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons
-              name="numeric-4-box-outline"
-              size={size}
-              color={color}
-            />
+            <Octicons name="person" size={size} color={color} />
           ),
         }}
       />

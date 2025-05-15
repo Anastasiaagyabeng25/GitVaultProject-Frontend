@@ -14,5 +14,5 @@
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
     "nativewind-env.d.ts"
-, "app/(tabs)/(home)"  ]
+, "app/(tabs)/(home)", "screens/HomeScreen.tsx", "screens/ExploreScreen.tsx", "screens/NotificationScreen.tsx", "types/types.ts"  ]
 }

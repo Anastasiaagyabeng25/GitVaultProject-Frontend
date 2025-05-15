@@ -4,12 +4,14 @@ import React, { FC, ReactNode } from "react";
 export type UserCredentials = {
   email: string;
   password: string;
+  token: string; // JWT token
 };
 
 type CredentialsContext = {
   signIn: (userCredentials: UserCredentials) => void;
   signOut: () => void;
   user: UserCredentials | null;
+  token: string | null;
 };
 
 type AuthProviderProps = {
@@ -21,6 +23,7 @@ const AuthContext = React.createContext<CredentialsContext>({
   signIn: () => {},
   signOut: () => {},
   user: null,
+  token: null,
 });
 
 // This hook can be used to access the user info.
@@ -60,6 +63,7 @@ export const Provider: FC<AuthProviderProps> = (props) => {
   const [user, setAuth] = React.useState<UserCredentials | null>(
     props.userCredentials
   );
+  const token = user?.token || null;
 
   useProtectedRoute(user);
 
@@ -69,9 +73,23 @@ export const Provider: FC<AuthProviderProps> = (props) => {
         signIn: (userCredentials: UserCredentials) => setAuth(userCredentials),
         signOut: () => setAuth(null),
         user,
+        token,
       }}
     >
       {props.children}
     </AuthContext.Provider>
   );
 };
+
+
+
+
+
+// use when you want to make a call to the back end and require authentication 
+// const { token } = useAuth();
+
+// fetch("https://your-api.com/secure-endpoint", {
+//   headers: {
+//     Authorization: `Bearer ${token}`,
+//   },
+// });
