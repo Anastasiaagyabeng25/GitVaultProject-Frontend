@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import { Octicons } from "@expo/vector-icons";
-import NotificationHeader from "../components/NotificationHeader";
-import NotificationItem from "../components/NotificationItem";
-import NotificationFilterBar from "../components/NotificationFilterBar";
-import { Notification } from "../types";
+import NotificationHeader from "../../components/NotificationHeader";
+import NotificationItem from "../../components/NotificationItem";
+import NotificationFilterBar from "../../components/NotificationFilterBar";
+import { Notification } from "../../types/types";
 
 const notifications: Notification[] = [
   {

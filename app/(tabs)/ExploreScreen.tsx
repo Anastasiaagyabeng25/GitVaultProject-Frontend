@@ -7,11 +7,11 @@ import {
   TextInput,
 } from "react-native";
 import { Octicons } from "@expo/vector-icons";
-import ExploreHeader from "../components/ExploreHeader";
-import RepositoryCard from "../components/RepositoryCard";
-import ExploreTrendingSection from "../components/ExploreTrendingSection";
-import ExploreTopicCard from "../components/ExploreTopicCard";
-import { Repository, Topic } from "../types";
+import ExploreHeader from "../../components/ExploreHeader";
+import RepositoryCard from "../../components/RepositoryCard";
+import ExploreTrendingSection from "../../components/ExploreTrendingSection";
+import ExploreTopicCard from "../../components/ExploreTopicCard";
+import { Repository, Topic } from "../../types/types";
 
 const trendingRepositories: Repository[] = [
   {

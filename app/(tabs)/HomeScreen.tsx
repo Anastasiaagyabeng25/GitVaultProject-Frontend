@@ -1,10 +1,10 @@
 import React from "react";
 import { View, Text, ScrollView, TouchableOpacity, Image } from "react-native";
 import { Octicons } from "@expo/vector-icons";
-import Header from "../components/Header";
-import RepositoryCard from "../components/RepositoryCard";
-import ActivityItem from "../components/ActivityItem";
-import { Repository, Activity } from "../types";
+import Header from "../../components/Header";
+import RepositoryCard from "../../components/RepositoryCard";
+import ActivityItem from "../../components/ActivityItem";
+import { Repository, Activity } from "../../types/types";
 
 const repositories: Repository[] = [
   {

@@ -1,68 +1,15 @@
 import { Stack } from "expo-router";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 import "../global.css";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { useState, useEffect } from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { Provider, UserCredentials } from "../context/auth";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useProtectedRoute } from "../context/auth";
 
-export default function AuthLayout() {
-  const [isReady, setIsReady] = useState(false);
-  const [loadedUser, setLoadedUser] = useState<UserCredentials | null>(null);
-  const [loadingError, setLoadingError] = useState<string | null>(null);
-
-  const getUserFromStorage = async () => {
-    try {
-      const user = await AsyncStorage.getItem("user");
-      if (user) {
-        setLoadedUser(JSON.parse(user));
-      }
-    } catch (error) {
-      setLoadingError("Failed to load user data.");
-    } finally {
-      setIsReady(true);
-    }
-  };
-
-  useEffect(() => {
-    getUserFromStorage();
-  }, []);
-
-  if (!isReady) {
-    return (
-      <GestureHandlerRootView style={{ flex: 1 }}>
-        <View style={styles.loading}>
-          <Text>Loading...</Text>
-        </View>
-      </GestureHandlerRootView>
-    );
-  }
-
-  if (loadingError) {
-    return (
-      <GestureHandlerRootView style={{ flex: 1 }}>
-        <View style={styles.loading}>
-          <Text>{loadingError}</Text>
-        </View>
-      </GestureHandlerRootView>
-    );
-  }
-
-  // Pass loadedUser to the Provider
+export default function RootLayout() {
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
-      <Provider userCredentials={loadedUser}>
-        <Stack screenOptions={{ headerShown: false }} />
-      </Provider>
-    </GestureHandlerRootView>
+    <SafeAreaProvider>
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="index" />
+        <Stack.Screen name="(auth)" />
+        <Stack.Screen name="(tabs)" />
+      </Stack>
+    </SafeAreaProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  loading: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

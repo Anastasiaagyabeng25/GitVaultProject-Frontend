@@ -15,7 +15,7 @@ export default function BottomTabsLayout() {
       }}
     >
       <Tabs.Screen
-        name="home"
+        name="HomeScreen"
         options={{
           title: "Home",
           tabBarIcon: ({ color, size }) => (
@@ -24,7 +24,7 @@ export default function BottomTabsLayout() {
         }}
       />
       <Tabs.Screen
-        name="notifications"
+        name="NotificationScreen"
         options={{
           title: "Notifications",
           tabBarIcon: ({ color, size }) => (
@@ -33,7 +33,7 @@ export default function BottomTabsLayout() {
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="ExploreScreen"
         options={{
           title: "Explore",
           tabBarIcon: ({ color, size }) => (
@@ -42,7 +42,7 @@ export default function BottomTabsLayout() {
         }}
       />
       <Tabs.Screen
-        name="profile"
+        name="ProfileScreen"
         options={{
           title: "Profile",
           tabBarIcon: ({ color, size }) => (

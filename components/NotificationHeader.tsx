@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StatusBar } from "react-native";
 import { Octicons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const NotificationHeader: React.FC = () => {
   return (
@@ -11,7 +12,7 @@ const NotificationHeader: React.FC = () => {
 
         <View className="flex-row items-center">
           <TouchableOpacity className="p-2 mr-2">
-            <Octicons name="check-all" size={20} color="#24292e" />
+            <MaterialCommunityIcons name="check-all" size={20} color="#24292e" />
           </TouchableOpacity>
           <TouchableOpacity className="p-2">
             <Octicons name="gear" size={20} color="#24292e" />
