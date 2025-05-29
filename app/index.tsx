@@ -5,17 +5,29 @@ import { Redirect } from "expo-router";
 export default function Index() {
   const [isLoading, setIsLoading] = useState(true);
   const [hasUser, setHasUser] = useState(false);
+  const [hasSeenOnboarding, setHasSeenOnboarding] = useState(false);
 
   useEffect(() => {
-    // Simulate auth check
-    const checkAuth = async () => {
-      // Replace with actual auth check
-      const userExists = false;
-      setHasUser(userExists);
-      setIsLoading(false);
+    // Simulate auth check and onboarding check
+    const checkAppState = async () => {
+      try {
+        // Replace with actual auth check
+        const userExists = false;
+
+        // Replace with actual onboarding check (AsyncStorage, etc.)
+        // For now, we'll assume they haven't seen onboarding
+        const onboardingSeen = false;
+
+        setHasUser(userExists);
+        setHasSeenOnboarding(onboardingSeen);
+        setIsLoading(false);
+      } catch (error) {
+        console.error("Error checking app state:", error);
+        setIsLoading(false);
+      }
     };
 
-    checkAuth();
+    checkAppState();
   }, []);
 
   if (isLoading) {
@@ -26,9 +38,16 @@ export default function Index() {
     );
   }
 
+  // If user is authenticated, go to main app
   if (hasUser) {
     return <Redirect href="/(tabs)/HomeScreen" />;
   }
 
+  // If user hasn't seen onboarding, show onboarding
+  if (!hasSeenOnboarding) {
+    return <Redirect href="/onboarding" />;
+  }
+
+  // Otherwise, show sign in
   return <Redirect href="/(auth)/SignIn" />;
 }
